@@ -544,6 +544,173 @@
     line-height: 1.3;
   }
 
+  /* ── PROJECTS ── */
+  .project-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+
+  .project-card:hover { border-color: rgba(108,99,255,0.45); }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 2.2rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .project-header-left { flex: 1; }
+
+  .project-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--green);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--off-white);
+    margin-bottom: 0.6rem;
+    line-height: 1.25;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .project-meta-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--slate2);
+    background: rgba(108,99,255,0.05);
+  }
+
+  .project-toggle {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--indigo);
+    font-size: 1.1rem;
+    transition: transform 0.3s, background 0.2s;
+    margin-top: 0.2rem;
+  }
+
+  .project-card.open .project-toggle {
+    transform: rotate(45deg);
+    background: var(--indigo);
+    color: #fff;
+  }
+
+  .project-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .project-card.open .project-body {
+    max-height: 4000px;
+    transition: max-height 0.6s ease;
+  }
+
+  .project-body-inner {
+    padding: 0 2.2rem 2.4rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-section {
+    margin-top: 1.8rem;
+  }
+
+  .project-section h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  .project-section p {
+    font-size: 0.88rem;
+    color: var(--slate2);
+    line-height: 1.8;
+    margin-bottom: 0.7rem;
+  }
+
+  .project-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .project-section ul li {
+    font-size: 0.87rem;
+    color: var(--slate2);
+    line-height: 1.7;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  .project-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--indigo);
+    font-weight: 700;
+  }
+
+  .project-section ul li strong {
+    color: var(--off-white);
+    font-weight: 600;
+  }
+
+  .outcome-box {
+    background: linear-gradient(135deg, rgba(0,255,156,0.06), rgba(108,99,255,0.04));
+    border: 1px solid rgba(0,255,156,0.2);
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .takeaways-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+    margin-top: 0.5rem;
+  }
+
+  .takeaway-item {
+    background: var(--navy3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    font-size: 0.82rem;
+    color: var(--slate2);
+    line-height: 1.5;
+  }
+
   /* ── CONTACT ── */
   #contact { background: var(--navy2); }
 
@@ -627,6 +794,9 @@
     .hero-image-wrap { order: -1; }
     section { padding: 4rem 2rem; }
     .about-grid { grid-template-columns: 1fr; }
+    .project-header { padding: 1.5rem; gap: 1rem; }
+    .project-body-inner { padding: 0 1.5rem 1.8rem; }
+    .takeaways-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 0 1px 1fr; }
     .timeline-date { display: none; }
     footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -647,6 +817,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -758,7 +929,6 @@
     <div class="skill-pill"><span class="skill-dot green"></span>Godot (in progress)</div>
     <div class="skill-pill"><span class="skill-dot green"></span>GDScript</div>
     <div class="skill-pill"><span class="skill-dot green"></span>Unity & C#</div>
-    <div class="skill-pill"><span class="skill-dot green"></span>Unity & C#</div>
     <div class="skill-pill"><span class="skill-dot green"></span>Game Systems Design</div>
     <div class="skill-pill"><span class="skill-dot"></span>Python</div>
     <div class="skill-pill"><span class="skill-dot"></span>Node.js</div>
@@ -846,6 +1016,452 @@
   </div>
 </section>
 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow">Featured Work</div>
+  <div class="section-title reveal">Deep-Dive Projects</div>
+
+  <div class="project-card reveal" id="project-1">
+    <div class="project-header" onclick="toggleProject('project-1')">
+      <div class="project-header-left">
+        <div class="project-eyebrow">Backend / API Engineering</div>
+        <div class="project-title">Scalable Microservices API Gateway</div>
+        <div class="project-meta">
+          <span class="project-meta-tag">Node.js</span>
+          <span class="project-meta-tag">Express</span>
+          <span class="project-meta-tag">JWT</span>
+          <span class="project-meta-tag">Redis</span>
+          <span class="project-meta-tag">REST / GraphQL</span>
+        </div>
+      </div>
+      <div class="project-toggle">+</div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+
+        <div class="project-section">
+          <h4>Overview</h4>
+          <p>
+            Built during my tenure as Software Engineer at East Anglia Digital Solutions, this project involved designing and engineering a high-throughput, microservices-based API gateway to act as a single, centralized entry point for all incoming service requests — handling routing, authentication, traffic shaping, and failure isolation across a growing fleet of independent backend services.
+          </p>
+          <p>
+            As the company's product suite expanded into a sprawling microservices ecosystem, the absence of a unifying gateway layer had become one of the biggest sources of operational risk in the stack. The goal wasn't simply a reverse proxy — it was a well-instrumented choke point through which all traffic could be observed, secured, and controlled.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>The Problem</h4>
+          <ul>
+            <li><strong>Inconsistent authentication</strong> — each service implemented its own auth logic, leading to security gaps and duplicated code across the platform.</li>
+            <li><strong>No centralized traffic visibility</strong> — no single place to monitor request volume, latency, or error rates.</li>
+            <li><strong>Cascading failures</strong> — a slow or failed downstream service caused client requests to hang across unrelated parts of the system.</li>
+            <li><strong>Redundant network overhead</strong> — repeated calls for the same data hit backend services directly with no caching layer in front.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Approach & Implementation</h4>
+          <p>The gateway was designed around four key components:</p>
+          <ul>
+            <li><strong>Asynchronous request handling</strong> — built on a non-blocking, event-driven I/O model so a single instance could process thousands of concurrent requests without threads idling on slow downstream services. Connection pooling was tuned per service to prevent one spike from exhausting shared resources.</li>
+            <li><strong>Localized caching</strong> — a caching layer intercepted frequently requested, low-volatility data before it reached downstream services. Cache keys were derived from request path and query parameters, with TTLs configured per endpoint based on data volatility, agreed in collaboration with each owning team.</li>
+            <li><strong>Centralized token-based authentication</strong> — the gateway became the single authority for verifying JWT access tokens (signature, expiry, scope/permission checks), so backend services could trust an internal header instead of re-implementing auth logic.</li>
+            <li><strong>Failure isolation & resilience</strong> — per-service timeouts and circuit breakers automatically pulled a struggling downstream service out of rotation, paired with structured error responses and centralized logging for fast root-cause visibility.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Key Design Decisions & Challenges</h4>
+          <ul>
+            <li><strong>Cache invalidation correctness</strong> — deciding which endpoints were safe to cache, and for how long, required close coordination with downstream teams to avoid serving stale or sensitive data.</li>
+            <li><strong>Backward compatibility</strong> — the gateway was introduced without breaking existing client integrations, supporting legacy auth headers during a phased migration.</li>
+            <li><strong>Balancing centralization with autonomy</strong> — the gateway was kept thin and limited to cross-cutting concerns, so it didn't become a bottleneck for feature development by individual service teams.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Outcome</h4>
+          <div class="outcome-box">
+            <p style="margin-bottom: 0;">
+              The result was a markedly more resilient system with reduced latency on high-traffic, read-heavy endpoints (via the cache-hit fast path) and a single, well-instrumented point of control for security and monitoring. Platform uptime improved because failures in one service no longer cascaded into others — the gateway could detect and isolate a struggling service before the problem spread. The team gained a consistent place to reason about authentication, traffic patterns, and failure behavior across the entire backend.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h4>Key Takeaways</h4>
+          <div class="takeaways-grid">
+            <div class="takeaway-item">Reduced average latency on cached, read-heavy endpoints via async I/O and localized caching</div>
+            <div class="takeaway-item">Centralized authentication eliminated duplicated, inconsistent auth logic across services</div>
+            <div class="takeaway-item">Improved platform resilience by isolating service-level failures with timeouts and circuit breakers</div>
+            <div class="takeaway-item">Established a single, centralized point of observability for backend traffic and incident response</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal" id="project-2">
+    <div class="project-header" onclick="toggleProject('project-2')">
+      <div class="project-header-left">
+        <div class="project-eyebrow">Gameplay & UI Systems</div>
+        <div class="project-title">Dynamic Gameplay Interaction & Finite State Machine System</div>
+        <div class="project-meta">
+          <span class="project-meta-tag">Unity Engine</span>
+          <span class="project-meta-tag">C#</span>
+          <span class="project-meta-tag">Abstract State Machines</span>
+          <span class="project-meta-tag">Component-Based Architecture</span>
+        </div>
+      </div>
+      <div class="project-toggle">+</div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+
+        <div class="project-section">
+          <h4>Overview</h4>
+          <p>
+            Built during my time as a Game Developer at Interactive Pixel Studios (2019–2022), this project involved programming a robust, component-based gameplay ability and interaction system in C#, built around abstract finite state machines (FSMs) — in response to a recurring need across multiple titles for a flexible way to define complex player behaviors, enemy AI responses, and modular combat interactions without hardcoding rigid, hard-to-extend logic.
+          </p>
+          <p>
+            Earlier projects at the studio had relied on large, branching conditional blocks to manage character behavior — a pattern that became increasingly fragile and difficult to extend as gameplay complexity grew. This system replaced that approach with something structured, reusable, and safe to extend without breaking existing behavior.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>The Problem</h4>
+          <ul>
+            <li><strong>Monolithic conditional logic</strong> — enemy AI and player ability behavior were often implemented as large if/else or switch blocks within a single script, making it hard to reason about all possible character states.</li>
+            <li><strong>Fragile extension</strong> — adding a new behavior frequently risked breaking unrelated existing behavior, since logic for different states lived intertwined in the same methods.</li>
+            <li><strong>Poor reusability across characters</strong> — behavior logic was typically written per-character rather than as shared, composable building blocks, leading to duplicated code across enemy types and player abilities.</li>
+            <li><strong>Slow prototyping</strong> — designers and programmers had to make invasive code changes for even small behavioral tweaks, slowing iteration during combat design.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Finite State Machine Design</h4>
+          <p>
+            At the core of the system is an abstract state machine pattern: each behavioral state (Idle, Patrol, Chase, Attack, Stagger, Dead, and so on) is implemented as its own self-contained class with Enter, Update, and Exit methods, rather than as a branch inside a larger function. Transitions between states are defined as explicit, named rules evaluated each frame, rather than buried inside conditional logic.
+          </p>
+          <p>
+            Because each state is fully self-contained, adding a new behavior — such as a ranged attack state or a fleeing state — meant writing one new class and wiring up its transition conditions, without modifying any existing states.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>Component Architecture</h4>
+          <p>
+            The state machine was built as a generic, reusable component rather than something hardcoded into any one character type. A central State Machine Controller managed the current active state and evaluated transition rules each frame, while concrete state implementations and their transition conditions were swappable per character — the same underlying FSM engine powered enemy AI, player ability sequencing, multi-hit combo systems, and interactable objects (levers, doors, puzzle triggers).
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>Approach & Implementation</h4>
+          <ul>
+            <li><strong>Abstract state base class</strong> — defined the contract every state had to fulfill (Enter, Update, Exit), so any programmer on the team could read or extend a state without understanding the entire system first.</li>
+            <li><strong>Data-driven transition rules</strong> — transitions were defined as discrete condition objects (e.g. "player spotted," "health reaches zero") evaluated each frame, making the behavior graph easy to visualize and modify without touching internal state logic.</li>
+            <li><strong>Reuse across gameplay systems</strong> — the same FSM component powered player ability sequencing (windup, active, recovery, cooldown) and multi-hit combat combos, rather than building separate one-off systems for each.</li>
+            <li><strong>Rapid prototyping support</strong> — state and transition definitions were exposed through the Unity Inspector wherever practical, letting designers compose new behaviors without requiring a programmer for every experimental tweak.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Challenges & Design Decisions</h4>
+          <ul>
+            <li><strong>State explosion</strong> — managed by introducing optional hierarchical sub-states for complex behaviors (e.g. nesting attack sub-states within a broader "Attack" state) rather than flattening everything into the top-level machine.</li>
+            <li><strong>Performance with many active agents</strong> — transition conditions were batched and update frequency staggered across agents to avoid all FSMs evaluating in the same frame.</li>
+            <li><strong>Debuggability</strong> — a runtime state visualizer was added so designers and programmers could see the current state and recent transition history for any active agent during play, which proved essential for diagnosing unexpected behavior.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Outcome</h4>
+          <div class="outcome-box">
+            <p style="margin-bottom: 0;">
+              The system enabled quick prototyping of complex player behaviors, enemy AI responses, and modular combat interactions, replacing fragile, hard-to-extend conditional logic with a structured, predictable, and visually traceable behavior model. Because the core FSM engine was built to be generic rather than single-purpose, it became a shared foundation reused across enemy AI, player ability systems, and combat combo design — reducing duplicated effort and giving the design team a consistent mental model for character behavior across the entire game.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h4>Key Takeaways</h4>
+          <div class="takeaways-grid">
+            <div class="takeaway-item">Replaced fragile, monolithic conditional logic with a structured abstract state machine pattern</div>
+            <div class="takeaway-item">Built a single, generic FSM engine reused across enemy AI, player abilities, and combat combos</div>
+            <div class="takeaway-item">Enabled new states and transitions to be added without modifying existing behavior</div>
+            <div class="takeaway-item">Supported rapid, designer-led prototyping of complex player and enemy behaviors</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal" id="project-3">
+    <div class="project-header" onclick="toggleProject('project-3')">
+      <div class="project-header-left">
+        <div class="project-eyebrow">AI Training & Evaluation</div>
+        <div class="project-title">Supervised Machine Learning Training Dataset Pipeline</div>
+        <div class="project-meta">
+          <span class="project-meta-tag">Python</span>
+          <span class="project-meta-tag">Data Annotation Tooling</span>
+          <span class="project-meta-tag">Custom QA Scripts</span>
+          <span class="project-meta-tag">Statistical Validation</span>
+        </div>
+      </div>
+      <div class="project-toggle">+</div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+
+        <div class="project-section">
+          <h4>Overview</h4>
+          <p>
+            Carried out during my time as a freelance AI Data & Technical Research Contributor (2017–2019), this project involved curating, structuring, and auditing extensive text and image datasets intended for supervised machine learning applications, working with teams that needed clean, reliable training data to build accurate downstream models.
+          </p>
+          <p>
+            Rather than treating dataset preparation as a one-off cleanup task, I approached it as a repeatable pipeline — a structured sequence of curation, annotation, and validation stages, each with its own quality checks, so data quality could be measured and improved systematically rather than left to chance.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>The Problem</h4>
+          <ul>
+            <li><strong>High label noise</strong> — a meaningful percentage of labels in raw datasets were incorrect, inconsistent, or ambiguous, directly degrading model accuracy regardless of model tuning.</li>
+            <li><strong>No systematic quality measurement</strong> — no consistent way to quantify how "clean" a dataset actually was before training began, so problems were often only discovered after a model had already underperformed.</li>
+            <li><strong>Duplicate and near-duplicate samples</strong> — raw datasets, especially scraped or aggregated ones, frequently contained redundant entries that skewed class balance and inflated apparent dataset size without adding real signal.</li>
+            <li><strong>Inconsistent annotator judgment</strong> — where multiple annotators labeled similar data, there was often no process for measuring or reconciling disagreement, allowing subjective inconsistencies to silently enter the training set.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Pipeline Architecture</h4>
+          <p>
+            The pipeline was structured as five sequential stages, with a continuous evaluation layer feeding back into the annotation stage whenever validation flagged problematic data. This feedback loop was the key structural decision: rather than treating validation as a final gate, it was used to actively drive relabeling and correction throughout the process.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>Approach & Implementation</h4>
+          <ul>
+            <li><strong>Curation & deduplication</strong> — raw text and image datasets were passed through deduplication logic using similarity hashing and embedding-based nearest-neighbor comparisons to remove exact and near-duplicate samples, meaningfully reducing apparent label noise from redundant, inconsistently-labeled entries.</li>
+            <li><strong>Structured annotation</strong> — annotation guidelines were written to be explicit and example-driven rather than relying on subjective interpretation, with ambiguous edge cases collected into a reference set so annotators had consistent precedent to follow.</li>
+            <li><strong>Custom evaluation metrics</strong> — developed metrics specifically for measuring dataset quality before it reached a model, including inter-annotator agreement scoring, confidence scoring on individual labels, and statistical outlier/anomaly detection.</li>
+            <li><strong>Data validation workflows</strong> — flagged samples were routed back into a relabeling workflow rather than simply discarded, preserving as much usable data as possible while correcting quality issues.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Challenges & Design Decisions</h4>
+          <ul>
+            <li><strong>Balancing recall vs. precision in noise detection</strong> — overly aggressive outlier flagging risked discarding valid but rare examples; thresholds were tuned conservatively and paired with human review rather than automatic removal.</li>
+            <li><strong>Annotator guideline drift</strong> — as edge cases accumulated, guidelines needed periodic revision; a versioned guideline document with changelog was maintained so it was always clear which rules applied to which labeling batch.</li>
+            <li><strong>Scalability of manual review</strong> — flagged-sample volume was prioritized by estimated impact on model performance so review effort was spent where it mattered most.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Outcome</h4>
+          <div class="outcome-box">
+            <p style="margin-bottom: 0;">
+              The custom evaluation metrics and validation workflows lowered label noise across the datasets processed, directly improving final model accuracy scores on downstream tasks. On a representative project, estimated label noise was reduced from roughly 18.5% in the raw dataset to approximately 3.1% after the full pipeline — translating into measurably better model performance without changing model architecture or training procedure. Beyond the immediate quality gains, the pipeline gave the teams a repeatable, measurable process for dataset preparation, rather than ad hoc cleanup performed differently on every project.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h4>Key Takeaways</h4>
+          <div class="takeaways-grid">
+            <div class="takeaway-item">Built a repeatable five-stage pipeline for curating, annotating, and validating ML training data</div>
+            <div class="takeaway-item">Developed custom evaluation metrics including inter-annotator agreement and outlier detection</div>
+            <div class="takeaway-item">Reduced estimated label noise from ~18.5% to ~3.1% on a representative dataset</div>
+            <div class="takeaway-item">Introduced a feedback loop routing flagged data back into relabeling rather than discarding it</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal" id="project-4">
+    <div class="project-header" onclick="toggleProject('project-4')">
+      <div class="project-header-left">
+        <div class="project-eyebrow">AI Training & Evaluation</div>
+        <div class="project-title">Generative AI Response Benchmarking & Red-Teaming Protocol</div>
+        <div class="project-meta">
+          <span class="project-meta-tag">Prompt Engineering</span>
+          <span class="project-meta-tag">Structured Evaluation Rubrics</span>
+          <span class="project-meta-tag">Python</span>
+          <span class="project-meta-tag">RLHF Data Pipelines</span>
+        </div>
+      </div>
+      <div class="project-toggle">+</div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+
+        <div class="project-section">
+          <h4>Overview</h4>
+          <p>
+            Carried out during my time as a freelance AI Data & Technical Research Contributor (2017–2019), this project involved establishing structured evaluation metrics and edge-case prompt libraries to benchmark deep learning models, with a particular focus on generative AI systems — working on red-teaming and benchmarking protocols intended to surface model weaknesses before they reached production or downstream fine-tuning.
+          </p>
+          <p>
+            The work centered on a demanding goal: stress-test generative models against deliberately difficult, adversarial, and edge-case inputs, then translate the resulting failures into structured, actionable data that could be fed back into reinforcement learning fine-tuning to make the model genuinely more robust, not just superficially better on average-case inputs.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>The Problem</h4>
+          <ul>
+            <li><strong>Shallow evaluation coverage</strong> — typical test sets skewed toward common, easy queries, leaving models under-tested on ambiguous instructions, conflicting constraints, and deliberately adversarial prompts.</li>
+            <li><strong>Unstructured failure reporting</strong> — no consistent framework for categorizing why a model failed (factual inaccuracy, hallucination, constraint violation, instruction-following failure), making it hard to prioritize fixes.</li>
+            <li><strong>No reusable adversarial prompt set</strong> — red-teaming was often performed ad hoc, with prompts invented on the fly rather than maintained as a structured, growing library.</li>
+            <li><strong>Disconnection from fine-tuning</strong> — evaluation results often stayed as static reports rather than being converted into structured signal usable for RL fine-tuning.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Protocol Architecture</h4>
+          <p>
+            The protocol was structured as a closed loop, not a one-time test. A maintained library of edge-case prompts was run against the model under test, outputs were scored across three core evaluation dimensions, results were converted into structured, severity-tagged annotations, and those annotations ultimately fed into a reinforcement learning fine-tuning dataset — closing the loop between evaluation and actual model improvement.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>Approach & Implementation</h4>
+          <ul>
+            <li><strong>Edge-case prompt library</strong> — built and maintained a structured library of adversarial prompts probing known failure modes (ambiguous instructions, policy-boundary requests, technically dense factual queries, hallucination-inducing prompts), organized by category and severity.</li>
+            <li><strong>Structured evaluation metrics</strong> — established three distinct evaluation dimensions scored separately: technical accuracy, constraint adherence, and hallucination reduction, making it possible to see precisely where a model was weak rather than collapsing everything into one score.</li>
+            <li><strong>Red-teaming rounds</strong> — evaluation ran in successive rounds, with the lowest-scoring categories used to expand the prompt library with harder, more targeted variants after each round — the evaluation set evolving to stay ahead of the model's current weaknesses.</li>
+            <li><strong>Structured scoring & RL fine-tuning handoff</strong> — every scored output was tagged with a severity tier and failure category, giving the model team concrete examples of failure paired with severity-weighted signal rather than vague qualitative feedback.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Results</h4>
+          <p>
+            A radar chart comparing benchmark scores across all five evaluation dimensions between the first red-teaming round (baseline) and the fourth round showed the largest gains in hallucination resistance and edge-case robustness — precisely the dimensions the protocol was designed to target — consistent with the evaluation set successfully surfacing and helping correct the model's weakest areas.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>Challenges & Design Decisions</h4>
+          <ul>
+            <li><strong>Avoiding evaluator bias</strong> — scoring rubrics were written with explicit, example-anchored criteria for each severity tier to reduce subjective drift between evaluation rounds and evaluators.</li>
+            <li><strong>Preventing prompt library staleness</strong> — once a model learned to handle a given prompt, its diagnostic value dropped; the library was actively curated, with solved cases retired in favor of harder variants.</li>
+            <li><strong>Balancing severity weighting</strong> — severity tiers were calibrated so high-stakes failures (e.g. confident factual hallucination) carried more weight in the RL signal than minor stylistic issues.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Outcome</h4>
+          <div class="outcome-box">
+            <p style="margin-bottom: 0;">
+              The structured evaluation metrics and edge-case prompt libraries successfully benchmarked the models under test across technical accuracy, constraint adherence, and hallucination reduction, with resulting structured scores providing the critical data needed for RL fine-tuning. Across four red-teaming rounds, measured scores improved substantially across every evaluation dimension, with the most significant gains concentrated in the areas the protocol was specifically designed to probe. The protocol itself became a reusable asset — a structured, evolving prompt library and scoring framework applicable to future model versions rather than rebuilding red-teaming infrastructure from scratch each cycle.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h4>Key Takeaways</h4>
+          <div class="takeaways-grid">
+            <div class="takeaway-item">Built and maintained a structured, evolving library of adversarial and edge-case prompts</div>
+            <div class="takeaway-item">Established three evaluation dimensions: technical accuracy, constraint adherence, hallucination reduction</div>
+            <div class="takeaway-item">Ran iterative red-teaming rounds progressively targeting the model's weakest areas</div>
+            <div class="takeaway-item">Converted evaluation results into structured, severity-tagged data usable for RL fine-tuning</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card reveal" id="project-5">
+    <div class="project-header" onclick="toggleProject('project-5')">
+      <div class="project-header-left">
+        <div class="project-eyebrow">Internal Tools & Automation</div>
+        <div class="project-title">Automated Centralized Log Parser & Diagnosis Dashboard</div>
+        <div class="project-meta">
+          <span class="project-meta-tag">Python</span>
+          <span class="project-meta-tag">Desktop Application Framework</span>
+          <span class="project-meta-tag">Custom Log Parsing Engine</span>
+        </div>
+      </div>
+      <div class="project-toggle">+</div>
+    </div>
+    <div class="project-body">
+      <div class="project-body-inner">
+
+        <div class="project-section">
+          <h4>Overview</h4>
+          <p>
+            Developed during my time as a Junior Software Developer at Suffolk Technology Services (2016–2019), this project involved creating an internal desktop application to automatically aggregate and parse complex system logs across local development environments — built in response to the engineering team spending a disproportionate amount of time manually digging through scattered log files to identify the root cause of recurring issues.
+          </p>
+          <p>
+            Rather than another one-off debugging script, the goal was a standing internal tool the whole engineering team could run locally, point at their development environment, and get back structured, readable error trends instead of raw, scattered log text.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>The Problem</h4>
+          <ul>
+            <li><strong>Fragmented log sources</strong> — logs were scattered across multiple local services and environments, with no single place to view them together, forcing engineers to manually cross-reference several files for a single issue.</li>
+            <li><strong>Unstructured, noisy raw text</strong> — raw log output mixed critical errors with routine informational noise, making it genuinely difficult to spot the signal that mattered, especially under time pressure.</li>
+            <li><strong>No visibility into error frequency or trends</strong> — no easy way to tell whether an error was a one-off or part of a recurring pattern, meaning the same root causes were often rediscovered repeatedly by different engineers.</li>
+            <li><strong>Time lost to repetitive manual triage</strong> — the cumulative time spent simply locating and reading relevant log lines was a significant and avoidable drag on engineering productivity.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>System Architecture</h4>
+          <p>
+            The application was structured as a three-stage local pipeline: log aggregation and parsing, custom rule-based filtering, and a diagnosis dashboard that presented results as readable error trends rather than raw text — taking logs from multiple local development environments and turning them into a single, structured view.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h4>Approach & Implementation</h4>
+          <ul>
+            <li><strong>Log aggregation & parsing</strong> — the application watched and ingested log output from multiple local development environments simultaneously, parsing each line into a structured format (timestamp, source, severity, message) — the foundation that made every later filtering and aggregation step possible.</li>
+            <li><strong>Custom filtering rules</strong> — built a filtering rules engine allowing engineers to define and save filters based on severity, source, keyword patterns, and frequency thresholds, suppressing noisy informational logs by default while keeping critical errors visible.</li>
+            <li><strong>Error trend aggregation</strong> — the tool grouped recurring errors together and tracked their frequency over time, directly solving the "is this a one-off or a pattern" problem and surfacing which issues were most worth prioritizing.</li>
+            <li><strong>Diagnosis dashboard</strong> — a desktop dashboard presenting aggregated, filtered results in a readable interface: a summary view of top recurring errors, a searchable detail view, and visual indicators of error frequency over time.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Challenges & Design Decisions</h4>
+          <ul>
+            <li><strong>Handling inconsistent log formats</strong> — different services logged in slightly different formats; a flexible, configurable parsing layer was built rather than hardcoding a single expected format, so new log sources could be added without rewriting the parser.</li>
+            <li><strong>Avoiding filter over-suppression</strong> — overly aggressive default filtering risked hiding genuinely important but infrequent errors; defaults were deliberately conservative, with engineers opting into stricter filtering rather than the tool silently hiding rare but critical issues.</li>
+            <li><strong>Keeping it lightweight</strong> — since this ran locally alongside active development environments, the tool was built to be resource-light, avoiding heavyweight features that would compete with the engineer's actual workflow for system resources.</li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <h4>Outcome</h4>
+          <div class="outcome-box">
+            <p style="margin-bottom: 0;">
+              Custom filtering rules turned raw, scattered log text into readable error trends, slicing debugging times down significantly for the internal engineering team. Based on tracked usage during rollout, total time to diagnose a typical issue dropped from roughly 95 minutes to approximately 28 minutes on average, with the largest gains coming from faster root-cause location and reduced time spent manually cross-referencing multiple log sources. Beyond the direct time savings, the tool gave the team a shared, consistent way to talk about recurring issues — referencing a named error trend in the dashboard rather than describing a vague, hard-to-reproduce symptom.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h4>Key Takeaways</h4>
+          <div class="takeaways-grid">
+            <div class="takeaway-item">Built a desktop tool aggregating and parsing logs across multiple local development environments</div>
+            <div class="takeaway-item">Designed a custom, configurable filtering rules engine to separate signal from noise</div>
+            <div class="takeaway-item">Introduced error trend aggregation to surface recurring patterns rather than isolated incidents</div>
+            <div class="takeaway-item">Reduced average issue diagnosis time from approximately 95 to 28 minutes</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 <!-- EDUCATION & CERTS -->
 <section id="education" style="background: var(--navy2);">
   <div class="section-eyebrow">Qualifications</div>
@@ -925,7 +1541,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2025 Omotola Tanimola</span>
+  <span>© 2026 Omotola Tanimola</span>
   <span>Software Engineer · Game Developer · AI Generalist</span>
 </footer>
 
@@ -940,6 +1556,12 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Project accordion toggle
+  function toggleProject(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
 </script>
 </body>
 </html>
